@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7111adc52fa00764c891d618f602d031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorData: {fileID: 11400000, guid: 39cc7ba1c8ffdd94a92d4736fbc85e18, type: 2}
   image: {fileID: 7213418813417090738}
 --- !u!114 &-1736732943017152117
 MonoBehaviour:

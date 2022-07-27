@@ -23,8 +23,9 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     
     public event Action<Cell> Clicked;
 
+    [SerializeField]
+    private Script_CollorManager colorData;
     
-
     [SerializeField]
     private Image image;
 
@@ -85,20 +86,20 @@ public class Cell : MonoBehaviour, IPointerClickHandler
             UpdateCell();
     }
     /// <summary>
-    /// Меняем цвета клеток в зависимости о уровня земли
+    /// Меняем цвета клеток в зависимости от уровня земли
     /// </summary>
     public void UpdateCell()
     {
-
-        image.color = CollorManager.Instance.CellColor[Depth];
         
+        //image.color = this.colorData.CellColor[Depth];
+        image.color = CollorManager.Instance.CellColor[Depth];
     }
     /// <summary>
     /// Меняем цвет клетки на золото
     /// </summary>
     public void UpdateCellGold()
     {
+        //image.color = this.colorData.CellColor[4];
         image.color = CollorManager.Instance.CellColor[4];
-
     }
 }

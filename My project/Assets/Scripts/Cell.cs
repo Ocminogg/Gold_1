@@ -76,7 +76,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         {
             GoldFind = 1;
             GameCounter.Instance.AddPoints(1);//Мы нашли золота, но осталось его поднять повторным кликом
-            UpdateCell(1);
+            UpdateCellGold();
             
         }
         
@@ -96,7 +96,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     /// <summary>
     /// Меняем цвет клетки на золото
     /// </summary>
-    public void UpdateCell(int gold)
+    public void UpdateCellGold()
     {
         image.color = CollorManager.Instance.CellColor[4];
 

@@ -67,9 +67,9 @@ public class GameCounter : MonoBehaviour
     {
         SetPoints(Points + 1);
     }
-    public void AddPoints(int points)
+    public void AddPointsOnField()
     {
-        FindGolds += points;
+        FindGolds++;
     }
     void SetPoints(int points) ////////////!!!!!
     {

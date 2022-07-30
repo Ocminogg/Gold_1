@@ -68,8 +68,7 @@ public class Field : MonoBehaviour
         
         if (field == null)
             CreateField();
-        //else
-        //    ClearGold();
+        
         for (int x = 0; x < this.fieldData.FieldSize; x++)
         {
             for (int y = 0; y < this.fieldData.FieldSize; y++)
@@ -83,19 +82,7 @@ public class Field : MonoBehaviour
             GenerateRandomCellGold();
         }
     }
-    public void ClearGold()
-    {
-        for (int x = 0; x < this.fieldData.FieldSize; x++)
-        {
-            for (int y = 0; y < this.fieldData.FieldSize; y++)
-            {
-                //var cell = field[x, y];
-                //cell.SetValueGold(cell.X, cell.Y, 8);
-                field[x, y].SetValueGold(x, y, 8);
-                //cell.SetValue(cell.X, cell.Y, 0);
-            }
-        }
-    }
+    
     private void GenerateRandomCellGold()
     {
         //var emptyCells = new List<Cell>();
@@ -115,7 +102,7 @@ public class Field : MonoBehaviour
         //if (emptyCells.Count == 0)
         //    throw new System.Exception("Здесь нет пустых cell!");
 
-        int value = Random.Range(0,4);
+        int value = Random.Range(1,4);
         var cell = field[Random.Range(0, 10), Random.Range(0, 10)];
         cell.SetValueGold(cell.X, cell.Y, value);
     }

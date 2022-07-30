@@ -16,7 +16,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     public int Gold { get; private set; }// Глубина где спрятано золото
     
     public int GoldFind { get; private set; }// Наличие золота в клетке
-    public bool IsEmpty => Depth < 1;
+    //public bool IsEmpty => Depth < 1;
 
     public const int MaxValue = 3;//Максимальная глубина
     
@@ -42,7 +42,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         X = x;
         Y = y;
         Depth = depth;
-
+        GoldFind = 0;
         UpdateCell();
     }
     // Cell для закапывания золота
@@ -57,35 +57,45 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     {
         
         Clicked?.Invoke(this);
+        
+        
         //image.color == CollorManager.Instance.CellColor[4]
         if (Depth == Gold)//Проверяем лежит ли в клетке золото
         {
             GameCounter.Instance.AddPoints();//Добавляем в счетчик взятое золото
             image.color = CollorManager.Instance.CellColor[3];//Так как мы забрали золото, то на месте ничего не остается
-            Depth = 6;
-            GoldFind = 0;
+            Depth = 4;
+            //GoldFind = 0;
         }
-        if ((GameCounter.GameStarted == true) && (Depth != Gold) && (GameCounter.ShovelsCount!=0))
+        if ((GameCounter.GameStarted == true) & (Depth != Gold) & (GameCounter.ShovelsCount!=0) & (Depth < MaxValue))
             Dig();
         
     }
 
     public void Dig()//Dig-копать
     {
+        
         Depth++;
-        if (GoldFind == 0 & (Depth <= MaxValue) )//Проверка нет ли в клетке уже золота и глубину яму
+        Debug.Log("Глубина " + Depth + "   Золото " + Gold + "   GoldFind "+ GoldFind);
+        if ((GoldFind == 0) & (Depth <= MaxValue) & (Depth != Gold))//Проверка нет ли в клетке уже золота и глубину яму
+        {
+            
             GameCounter.Instance.SubShovel();//Тратим лопату
+            UpdateCell();
+        }
+            
         if ((Depth <= MaxValue) && (Depth == Gold)) 
         {
+            GameCounter.Instance.SubShovel();//Тратим лопату
             GoldFind = 1;
-            GameCounter.Instance.AddPoints(1);//Мы нашли золота, но осталось его поднять повторным кликом
+            GameCounter.Instance.AddPointsOnField();//Мы нашли золота, но осталось его поднять повторным кликом
             UpdateCellGold();
             
         }
         
 
-        if ((Depth <= MaxValue) && (GoldFind == 0))
-            UpdateCell();
+        //if ((Depth <= MaxValue) && (GoldFind == 0))
+        //    UpdateCell();
     }
     /// <summary>
     /// Меняем цвета клеток в зависимости от уровня земли

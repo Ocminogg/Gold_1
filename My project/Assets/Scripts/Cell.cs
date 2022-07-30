@@ -57,13 +57,15 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     {
         
         Clicked?.Invoke(this);
-        if (image.color == CollorManager.Instance.CellColor[4])//Проверяем лежит ли в клетке золото
+        //image.color == CollorManager.Instance.CellColor[4]
+        if (Depth == Gold)//Проверяем лежит ли в клетке золото
         {
             GameCounter.Instance.AddPoints();//Добавляем в счетчик взятое золото
             image.color = CollorManager.Instance.CellColor[3];//Так как мы забрали золото, то на месте ничего не остается
-            Depth = 3;
+            Depth = 6;
+            GoldFind = 0;
         }
-        if ((GameCounter.GameStarted == true) && (image.color != CollorManager.Instance.CellColor[4]) && (GameCounter.ShovelsCount!=0))
+        if ((GameCounter.GameStarted == true) && (Depth != Gold) && (GameCounter.ShovelsCount!=0))
             Dig();
         
     }

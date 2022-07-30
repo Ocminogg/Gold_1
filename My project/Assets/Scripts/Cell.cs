@@ -5,20 +5,21 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
-//[CreateAssetMenu(fileName = "Cell", menuName = "Gameplay/ New Cell")]
 public class Cell : MonoBehaviour, IPointerClickHandler
 {
     public static Cell Instance;
     public int X { get; private set; }
-    public int Y { get; private set; } 
+    public int Y { get; private set; }
 
-    public int Depth { get; private set; }// Уровень земли
-    public int Gold { get; private set; }// Глубина где спрятано золото
-    
-    public int GoldFind { get; private set; }// Наличие золота в клетке
+    //public int Depth { get; private set; }// Уровень земли
+    int Depth;
+    //public int Gold { get; private set; }// Глубина где спрятано золото
+    int Gold;
+    //public int GoldFind { get; private set; }// Наличие золота в клетке
+    int GoldFind;
     //public bool IsEmpty => Depth < 1;
 
-    public const int MaxValue = 3;//Максимальная глубина
+    const int MaxValue = 3;//Максимальная глубина
     
     
     public event Action<Cell> Clicked;
@@ -30,8 +31,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     private Image image;
 
     private void Awake()
-    {
-        
+    {        
         GoldFind = 0;
         Depth = 0;
         UpdateCell();
@@ -50,15 +50,13 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     {
         X = x;
         Y = y;
-        Gold = depth;//Глубина нахождения золота
-        
+        Gold = depth;//Глубина нахождения золота        
     }
     public void OnPointerClick(PointerEventData eventData)
     {
         
         Clicked?.Invoke(this);
-        
-        
+                
         //image.color == CollorManager.Instance.CellColor[4]
         if (Depth == Gold)//Проверяем лежит ли в клетке золото
         {
@@ -91,11 +89,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
             GameCounter.Instance.AddPointsOnField();//Мы нашли золота, но осталось его поднять повторным кликом
             UpdateCellGold();
             
-        }
-        
-
-        //if ((Depth <= MaxValue) && (GoldFind == 0))
-        //    UpdateCell();
+        }        
     }
     /// <summary>
     /// Меняем цвета клеток в зависимости от уровня земли

@@ -10,15 +10,12 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     public static Cell Instance;
     public int X { get; private set; }
     public int Y { get; private set; }
-
-    
-    int Depth;
-    
-    int Gold;
-    
+        
+    int Depth;    
+    int Gold;    
     int GoldFind;
     
-    const int MaxValue = 3;//Максимальная глубина
+    const int MaxValue = 3;
     
     
     public event Action<Cell> Clicked;

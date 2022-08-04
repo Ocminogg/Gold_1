@@ -3,19 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//[CreateAssetMenu(fileName = "Field",menuName ="Gameplay/ New Field")]
 public class Field : MonoBehaviour
 {
     public static Field Instance;
 
     [SerializeField]
     private Script_Field fieldData;
-
-    //[Header("Характеристики Поля")]
-    //public float CellSize;
-    //public float CellSpacing;
-    //public int FieldSize;
-    //public int InitCellsCount;
 
     [Space(10)]
     [SerializeField]
@@ -36,11 +29,7 @@ public class Field : MonoBehaviour
     
 
     public void CreateField()
-    {
-        //if (field == null)
-        //{
-        //    field = new Cell[this.fieldData.FieldSize, this.fieldData.FieldSize];
-        //}
+    {        
         field = new Cell[this.fieldData.FieldSize, this.fieldData.FieldSize];
         float fieldWidth = this.fieldData.FieldSize * (this.fieldData.CellSize + this.fieldData.CellSpacing) + this.fieldData.CellSpacing;
         rectTransform.sizeDelta = new Vector2(fieldWidth, fieldWidth);
@@ -84,24 +73,7 @@ public class Field : MonoBehaviour
     }
     
     private void GenerateRandomCellGold()
-    {
-        //var emptyCells = new List<Cell>();
-
-        //for (int x = 0; x < this.fieldData.FieldSize; x++)
-        //{
-        //    for (int y = 0; y < this.fieldData.FieldSize; y++)
-        //    {
-
-        //        if (field[x, y].IsEmpty)
-        //        {
-        //            emptyCells.Add(field[x,y]);
-        //        }
-        //    }
-        //}
-
-        //if (emptyCells.Count == 0)
-        //    throw new System.Exception("Здесь нет пустых cell!");
-
+    {        
         int value = Random.Range(1,4);
         var cell = field[Random.Range(0, 10), Random.Range(0, 10)];
         cell.SetValueGold(cell.X, cell.Y, value);

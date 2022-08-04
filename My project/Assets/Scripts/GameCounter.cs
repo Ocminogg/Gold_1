@@ -7,9 +7,7 @@ using UnityEngine;
 public class GameCounter : MonoBehaviour
 {
     public static GameCounter Instance;
-
-    //public static int Points { get; private set; } /////////!!!!!
-    //public static int FindGolds { get; private set; } /////////!!!!!
+        
     int Points;
     int FindGolds;
 
@@ -17,12 +15,7 @@ public class GameCounter : MonoBehaviour
     public static bool GameStarted { get; private set; }
 
     [SerializeField]
-    private Script_GameCounter GameCounterData;
-
-    //[Header("Кол-во лопат и необходимое кол-во золота для победы")]
-    //public int Shovel;
-    //public int Golds;
-
+    private Script_GameCounter GameCounterData;    
     [SerializeField]
     private TextMeshProUGUI gameResult;
     [SerializeField]
@@ -47,8 +40,7 @@ public class GameCounter : MonoBehaviour
         gameResult.text = "";
         pointsText.text = "0";
         shovelsText.text = Convert.ToString(this.GameCounterData.Shovel);
-        GameStarted = true;        
-        //Field.Instance.ClearGold();
+        GameStarted = true;
         Field.Instance.GenerateField();
     }
     ///////////////////////////////////////////////////////
@@ -71,7 +63,7 @@ public class GameCounter : MonoBehaviour
     {
         FindGolds++;
     }
-    void SetPoints(int points) ////////////!!!!!
+    void SetPoints(int points)
     {
         Points = points;
         pointsText.text = Points.ToString();
@@ -83,7 +75,7 @@ public class GameCounter : MonoBehaviour
     {
         SetShovel(ShovelsCount - 1);
     }
-    void SetShovel(int points) //////////!!!!!!
+    void SetShovel(int points)
     {
         ShovelsCount = points;
         shovelsText.text = ShovelsCount.ToString();

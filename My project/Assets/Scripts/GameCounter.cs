@@ -43,7 +43,7 @@ public class GameCounter : MonoBehaviour
         GameStarted = true;
         Field.Instance.GenerateField();
     }
-    ///////////////////////////////////////////////////////
+    
     void Win()
     {
         GameStarted = false;
@@ -54,7 +54,7 @@ public class GameCounter : MonoBehaviour
         GameStarted = false;
         gameResult.text = "U Lose!";
     }
-    //////////////////////////////////////////////////////
+    
     public void AddPoints()
     {
         SetPoints(Points + 1);
@@ -70,7 +70,7 @@ public class GameCounter : MonoBehaviour
         if (Points == this.GameCounterData.Golds)
             Win();
     }
-    ///////////////////////////////////////////////////
+    
     public void SubShovel() 
     {
         SetShovel(ShovelsCount - 1);

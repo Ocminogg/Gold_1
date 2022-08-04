@@ -11,7 +11,5 @@ public class Script_Field : ScriptableObject
     public float CellSize;
     public float CellSpacing;
     public int FieldSize;
-    public int InitCellsCount;
-
-    
+    public int InitCellsCount;    
 }

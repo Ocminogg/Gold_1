@@ -13,8 +13,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         
     int Depth;    
     int Gold;    
-    int GoldFind;
-    
+    int GoldFind;    
     const int MaxValue = 3;
     
     
@@ -56,15 +55,14 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         {
             GameCounter.Instance.AddPoints();
             image.color = this.colorData.CellColor[3];
-            Depth = 4;
-            
+            Depth = 4;            
         }
         if ((GameCounter.GameStarted == true) & (Depth != Gold) & (GameCounter.ShovelsCount!=0) & (Depth < MaxValue))
             Dig();
         
     }
 
-    public void Dig()
+    void Dig()
     {
         
         Depth++;        
@@ -87,13 +85,11 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     
     public void UpdateCell()
     {        
-        image.color = this.colorData.CellColor[Depth];
-        //image.color = CollorManager.Instance.CellColor[Depth];
+        image.color = this.colorData.CellColor[Depth];        
     }
     
     public void UpdateCellGold()
     {
-        image.color = this.colorData.CellColor[4];
-        //image.color = CollorManager.Instance.CellColor[4];
+        image.color = this.colorData.CellColor[4];        
     }
 }

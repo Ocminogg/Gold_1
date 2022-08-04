@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class BackMenu : MonoBehaviour
 {
-    public void Back()
+    void Back()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }

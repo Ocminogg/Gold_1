@@ -55,7 +55,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         if (Depth == Gold)
         {
             GameCounter.Instance.AddPoints();
-            image.color = CollorManager.Instance.CellColor[3];
+            image.color = this.colorData.CellColor[3];
             Depth = 4;
             
         }
@@ -67,8 +67,7 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     public void Dig()
     {
         
-        Depth++;
-        Debug.Log("Глубина " + Depth + "   Золото " + Gold + "   GoldFind "+ GoldFind);
+        Depth++;        
         if ((GoldFind == 0) & (Depth <= MaxValue) & (Depth != Gold))
         {
             
@@ -88,13 +87,13 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     
     public void UpdateCell()
     {        
-        //image.color = this.colorData.CellColor[Depth];
-        image.color = CollorManager.Instance.CellColor[Depth];
+        image.color = this.colorData.CellColor[Depth];
+        //image.color = CollorManager.Instance.CellColor[Depth];
     }
     
     public void UpdateCellGold()
     {
-        //image.color = this.colorData.CellColor[4];
-        image.color = CollorManager.Instance.CellColor[4];
+        image.color = this.colorData.CellColor[4];
+        //image.color = CollorManager.Instance.CellColor[4];
     }
 }
